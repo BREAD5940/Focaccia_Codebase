@@ -7,9 +7,14 @@
 
 package org.usfirst.frc.team5940.robot;
 
+import org.team5940.pantry.processing_network.wpilib.input.controller.HIDButtonValueNode;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.team5940.pantry.logging.*;
+import org.team5940.pantry.logging.loggers.PrintStreamLogger;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,7 +30,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-
+		PrintStreamLogger logger = new PrintStreamLogger(System.out);
+		Network network = new Network(1000, logger);
+		Joystick joy;
+		new HIDButtonValueNode(network, logger, joy, 3);
 	}
 
 	/**
@@ -57,6 +65,8 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void teleopPeriodic() {
+		HIDButtonValue(2)
+		
 	}
 
 	/**
